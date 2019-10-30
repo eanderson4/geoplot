@@ -91,7 +91,8 @@ class HueMixin:
                 colors = [cmap.to_rgba(v) for v in hue]
                 categories = None
             else:  # k is not None
-                binning = _mapclassify_choro(hue, scheme, k=k)
+                bins = self.kwargs.pop('bins')
+                binning = _mapclassify_choro(hue, scheme, k=k, bins=bins)
                 values = binning.yb
                 if norm is None:
                     norm = mpl.colors.Normalize(vmin=min(values), vmax=max(values))
