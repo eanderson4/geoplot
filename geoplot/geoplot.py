@@ -93,9 +93,9 @@ class HueMixin:
             else:  # k is not None
                 if 'bins' in self.kwargs:
                     bins = self.kwargs.pop('bins')
+                    binning = _mapclassify_choro(hue, scheme, k=k, bins=bins)
                 else:
-                    bins = None
-                binning = _mapclassify_choro(hue, scheme, k=k, bins=bins)
+                    binning = _mapclassify_choro(hue, scheme, k=k)
                 values = binning.yb
                 if norm is None:
                     norm = mpl.colors.Normalize(vmin=min(values), vmax=max(values))
